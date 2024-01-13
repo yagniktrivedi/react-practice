@@ -1,0 +1,23 @@
+{
+  "name": "cra-create-dev",
+  "version": "1.0.0",
+  "description": "cra create dev",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yagniktrivedi/react-practice.git"
+  },
+  "keywords": [],
+  "author": "Yagnik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yagniktrivedi/react-practice/issues"
+  },
+  "homepage": "https://github.com/yagniktrivedi/react-practice#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  }
+}
