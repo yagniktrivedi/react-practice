@@ -1,5 +1,28 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import Header from "./components/Header";
+import Body from "./components/Body";
+import Footer from "./components/Footer";
+
+const AppLayout = () => {
+  console.log("App Rendered");
+  return (
+    <React.Fragment>
+      <Header />
+      <Body />
+      <Footer />
+    </React.Fragment>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<AppLayout />);
+
+// this is how you render React Component
+
+/*
+// this is how you render React Element 
+root.render(jsxHeading);
 
 // this is how you create React element using JSX
 // JSX element
@@ -17,14 +40,6 @@ const HeadingComponent = () => (
     </h1>
   </div>
 );
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<HeadingComponent />);
-
-// this is how you render React Component
-
-/*
-// this is how you render React Element 
-root.render(jsxHeading);
 
 this is how you create React element using core react
 JSX is HTML-like or XML-like syntax
