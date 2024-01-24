@@ -11,9 +11,9 @@ const RestaurantCard = ({
   avgRating,
 }) => {
   return (
-    <div className="card">
-      <img src={CDN_URL + cloudinaryImageId} />
-      <h2>{name}</h2>
+    <div className="p-4 m-4 w-[250px] bg-gray-200 rounded-lg hover:bg-gray-300">
+      <img src={CDN_URL + cloudinaryImageId} className="rounded-lg" />
+      <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{cuisines?.join(", ")}</h4>
       <h4>{areaName}</h4>
       <span>

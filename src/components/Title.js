@@ -2,9 +2,11 @@
 import FoodFireLogo from "../../Images/Food_App_Logo.jpg";
 
 const Title = () => (
-  <a href="/">
-    <img className="logo" src={FoodFireLogo} alt="Food Fire Logo" />
-  </a>
+  <div>
+    <img className="w-24 h-24" src={FoodFireLogo} alt="Food Fire Logo" />
+  </div>
 );
 
 export default Title;
+
+// href="/"

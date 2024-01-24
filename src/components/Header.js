@@ -12,27 +12,28 @@ const Header = () => {
     btnName == "Login" ? setBtnName("Logout") : setBtnName("Login");
   };
   return (
-    <div className="header">
+    <div className="flex justify-between shadow-md m-2 bg-pink-300 sm:bg-green-300">
+      {/* backgound color will be green if screen size bigger den sm - means small devices */}
       <Title />
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {isOnline ? "🍐" : "🍓"}</li>
-          <li>
+      <div className="items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4">Online Status: {isOnline ? "🍐" : "🍓"}</li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>
+          <li className="px-4">
             <i className="fa-solid fa-cart-shopping"></i>
           </li>
-          <li>
+          <li className="px-4">
             <button className="login" onClick={updateBtnName}>
               {btnName}
             </button>
