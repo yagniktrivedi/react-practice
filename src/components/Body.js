@@ -1,18 +1,25 @@
 // Body Component for body section: It contain all restaurant cards
 // We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { withPromotedLabel } from "./RestaurantCard";
+import UserContext from "../utils/UserContext";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [searchText, setSearchText] = useState([]);
   const [filteredRes, setFilteredRes] = useState([]);
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
   useEffect(() => {
     fetchData();
   }, []);
+
+  console.log("listOfRestaurants", listOfRestaurants);
 
   const fetchData = async () => {
     const data = await fetch(
@@ -93,6 +100,14 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
+        <div className="search m-4 p-4 flex items-center">
+          <label>User Name : </label>
+          <input
+            className="border border-black p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
       <div className="flex flex-wrap">
         {filteredRes.map((restaurant, i) => {
@@ -101,7 +116,11 @@ const Body = () => {
               key={restaurant.info.id}
               to={`restaurants/${restaurant.info.id}`}
             >
-              <RestaurantCard {...restaurant.info} />
+              {restaurant.info.avgRating > 4.4 ? (
+                <RestaurantCardPromoted {...restaurant.info} />
+              ) : (
+                <RestaurantCard {...restaurant.info} />
+              )}
             </Link>
           );
         })}
@@ -111,3 +130,5 @@ const Body = () => {
 };
 
 export default Body;
+
+// avgRating
