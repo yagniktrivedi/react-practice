@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import Title from "./Title";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  console.log("Header rendered");
   const [btnName, setBtnName] = useState("Login");
   const isOnline = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
+
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log("cartItems", cartItems);
   const updateBtnName = () => {
     btnName == "Login" ? setBtnName("Logout") : setBtnName("Login");
   };
@@ -30,6 +33,9 @@ const Header = () => {
           </li>
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart">Cart - {cartItems?.length} items</Link>
           </li>
           <li className="px-4">
             <i className="fa-solid fa-cart-shopping"></i>

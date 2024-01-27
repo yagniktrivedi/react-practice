@@ -1,13 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constans";
+import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  const dispatch = useDispatch();
+  const onAddClick = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {items?.map((item) => {
         return (
           <div
-            id={item?.card?.info?.id}
+            id={item.card.info.id}
             className="p-2 m-2 border-gray-400 border-b-2 text-left flex justify-between"
           >
             <div className="w-9/12">
@@ -19,7 +25,10 @@ const ItemList = ({ items }) => {
             </div>
             <div className="w-3/12 p-4">
               <div className="absolute">
-                <button className="w-12 rounded-lg bg-black text-white shadow-lg absolute">
+                <button
+                  className="w-12 rounded-lg bg-black text-white shadow-lg absolute"
+                  onClick={() => onAddClick(item)}
+                >
                   {" "}
                   Add +{" "}
                 </button>
