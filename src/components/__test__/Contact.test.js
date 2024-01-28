@@ -3,6 +3,21 @@ import Contact from "../Contact";
 import "@testing-library/jest-dom";
 
 describe("Should load contact us component", () => {
+  // beforeAll(() => {
+  //   console.log("Before all");
+  // });
+
+  // beforeEach(() => {
+  //   console.log("Before each");
+  // });
+
+  // afterEach(() => {
+  //   console.log("after each");
+  // });
+
+  // afterAll(() => {
+  //   console.log("after all");
+  // });
   it("Should load contact us component", () => {
     render(<Contact />);
     const heading = screen.getByRole("heading");

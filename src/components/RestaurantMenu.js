@@ -13,8 +13,13 @@ const RestaurantMenu = () => {
 
   if (restInfo === null) return <Shimmer />;
 
-  const { name, city, costForTwoMessage, cuisines } =
-    restInfo?.cards[0]?.card?.card?.info;
+  console.log("restInfo", restInfo);
+  const {
+    name = "Test",
+    city,
+    costForTwoMessage,
+    cuisines,
+  } = restInfo?.cards[0]?.card?.card?.info;
 
   const catagories =
     restInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -28,6 +33,7 @@ const RestaurantMenu = () => {
   return (
     <div className="text-center">
       <h1 className="font-bold my-3 text-2xl">{name}</h1>
+      <h1 className="font-bold my-3 text-2xl">{city}</h1>
       <p className="font-bold text-lg">
         {cuisines?.join(", ")} - {costForTwoMessage}
       </p>

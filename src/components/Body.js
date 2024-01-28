@@ -19,18 +19,11 @@ const Body = () => {
     fetchData();
   }, []);
 
-  console.log("listOfRestaurants", listOfRestaurants);
-
   const fetchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(
-      "Data",
-      json.data.cards[4]
-      // json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
     setListOfRestaurants(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -39,10 +32,10 @@ const Body = () => {
     );
   };
   const filerResList = () => {
-    console.log("inside callback");
-    const filerRes = listOfRestaurants?.filter((res) => res.info.avgRating > 4);
-    // console.log("filterd values", filerRes);
-    setListOfRestaurants(filerRes);
+    const filerRes = listOfRestaurants?.filter(
+      (res) => res.info.avgRating > 4.5
+    );
+    setFilteredRes(filerRes);
   };
 
   const onSearchChange = (e) => {
@@ -83,6 +76,7 @@ const Body = () => {
             className="border border-solid border-black"
             value={searchText}
             onChange={onSearchChange}
+            data-testid="searchInput"
           />
           <button
             className="px-4 py-2 m-4 bg-green-200 rounded-lg"
