@@ -11,7 +11,6 @@ const Header = () => {
   const { loggedInUser } = useContext(UserContext);
 
   const cartItems = useSelector((state) => state.cart.items);
-  console.log("cartItems", cartItems);
   const updateBtnName = () => {
     btnName == "Login" ? setBtnName("Logout") : setBtnName("Login");
   };
